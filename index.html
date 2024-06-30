@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body style="font-family: poppins;">
+  <div class="flex justify-center items-center w-full h-screen bg-blue-600">
+    <div class="md:w-3/4 lg:w-1/3 text-center bg-white p-4 rounded shadow ">
+      <h1 class="font-medium text-xl mb-4">
+        Quote of the Day
+      </h1>
+      <p class="quote mb-2"> <span>"</span>Never give up because you never know if the next try is going to be the one that works.<span>"</span> </p>
+      <h2 class="author text-right text-sm font-medium">.......  Ibukun womiloju.</h2>
+
+      <div class="flex justify-between mt-2">
+        <div class="flex space-x-2">
+          <a href="#" class="flex inline justify-center items-center text-blue-800 text-xl h-8 w-8 rounded-full bg-transparent border border-blue-800 hover:scale-90 transition duration-500"><i class='bx bxs-volume-full'></i></a>
+          <a href="#" class="flex inline justify-center items-center text-blue-800 text-xl h-8 w-8 rounded-full bg-transparent border border-blue-800 hover:scale-90 transition duration-500"><i class='bx bxl-facebook'></i></a>
+          <a href="#" class="flex inline justify-center items-center text-blue-800 text-xl h-8 w-8 rounded-full bg-transparent border border-blue-800 hover:scale-90 transition duration-500"><i class='bx bxl-twitter'></i></a>
+        </div>
+
+        <button class="bg-blue-700 text-white font-medium px-4 py-1 rounded-full hover:text-blue-800 hover:bg-blue-100 hover:border transition duration-500" onclick="window.location.reload();">Next Quote</button>
+      </div>
+    </div>
+
+
+  </div> 
+
+
+  <script>
+    const api_url = "https://api.api-ninjas.com/v1/quotes";
+    console.log(api_url);
+
+    async function getQoute(){
+      const response = await fetch(api_url, {
+        headers:{
+          'X-Api-Key': 'gEdymKZfIeMSLvSn4TSpkQ==TguceBEeqxi8Dvz6'
+        }
+      });
+      const data = await response.json();
+      console.log(data);
+      console.log(data[0]);
+
+      const newData2 = data[0];
+      console.log(newData2);
+
+      const prop = newData2.quote;
+      console.log(prop);
+
+      const author = newData2.author;
+      console.log(author)
+
+
+      document.querySelector(".quote").innerHTML ='"' + prop + '"';
+      document.querySelector(".author").innerHTML ="..... " + author;
+    }
+
+    getQoute();
+
+    // const author = data.author;
+    // console.log(author)
+  </script>
+</body>
+</html>
